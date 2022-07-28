@@ -4,14 +4,19 @@ this.workflowCockpit = workflowCockpit({
     // onError: _onError,
 })
 
-function _init (data, info) {
+
+
+function _init(data, info) {
+  let date = new Date();
+  let formatedDate = ((date.getDate() )) + '/' + ((date.getMonth() + 1)) + "/" + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes(); 
     console.log("iniciei")
     const { initialVariables } = data.loadContext;
     console.log(initialVariables);
 
     info.getUserData().then((userData) => {
+        document.getElementById("Date").setAttribute("value", formatedDate);
         document.getElementById("nomFun").setAttribute("value", userData.fullname)
-        document.getElementById("emaFun").setAttribute("value", userData.email);
+        // document.getElementById("emaFun").setAttribute("value", userData.email);
     }).then(() => {
         info.getPlatformData().then(function (platformData) {
             console.log(platformData)

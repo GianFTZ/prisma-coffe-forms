@@ -22,7 +22,17 @@
       type="text/javascript"
       src="https://cdn.senior.com.br/bpm/1.10.0/workflow-cockpit.min.js"
     ></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="module" src="main.js"></script>
+    <script>
+      function showHidden(){
+        let optionValue = document.getElementById("#option-selector").value;
+        if (optionValue == "others") {
+          document.getElementById('#-others').type = "text"
+        } else {
+          document.getElementById('#-others').type = "hidden"
+        }
+      }
+    </script>
 </head>
 <body>
     <form class="row g-3 needs-validation" id="form" novalidate>
@@ -31,7 +41,7 @@
         <div class="col-md-6">
           <!-- NOME -->
           <label for="nomFun" class="form-label">Nome do Colaborador</label>
-          <input type="text" class="form-control" id="nomFun" disabled />
+          <input type="email" class="form-control" id="Date" disabled />
         </div>
         <div class="col-md-6">
           <!-- DATA -->
@@ -47,49 +57,48 @@
         </div>
         <div class="col-md-12">
           <label for="nomDes" class="form-label">Motivo</label>
-          <select type="text" class="form-select" id="nomDes">
+          <select onchange="showHidden()" type="text" class="form-select" id="#option-selector">
             <option selected>Selecione uma opção</option>
-            <option value="">Visita Técnica</option>
-            <option value="">Reunião</option>
-            <option value="">Treinamento</option>
-            <option value="">outros</option>
+            <option value="visita-tecnica">Visita Técnica</option>
+            <option value="reuniao">Reunião</option>
+            <option value="treinamento">Treinamento</option>
+            <option value="others">Outros</option>
           </select>
           <!-- <div id="desMot" class="form-text">
             Informe detalhadamente o motivo da sua solicitação.
           </div> -->
         </div>
-        <div class="invalid-feedback col-12">
+        <div class="col-12">
           <!-- Outros  -->
-          <label for="others" class="form-label">Outros</label>
-          <input type="text" class="form-control" id="others" />
+          <input type="hidden" placeholder="digite o motivo" class="form-control" id="#-others" />
         </div>
 
         <!-- datas do evento -->
         <div class="col-md-6">
           <!-- Inicio do evento -->
-          <label for="nomFun" class="form-label">Nome do Colaborador</label>
-          <input type="text" class="form-control" id="nomFun" disabled />
+          <label for="Date" class="form-label">Data do início do evento</label>
+          <input type="date" class="form-control" id="Date"/>
         </div>
         <div class="col-md-6">
           <!-- fim do evento -->
-          <label for="Date" class="form-label">Data da Requisição</label>
-          <input type="email" class="form-control" id="Date" disabled />
+          <label for="Date" class="form-label">Data do término do evento</label>
+          <input type="date" class="form-control" id="Date"/>
         </div>
         <!-- Valores -->
         <div class="col-md-6">
           <!-- Custo unitario -->
-          <label for="nomFun" class="form-label">Nome do Colaborador</label>
-          <input type="text" class="form-control" id="nomFun" disabled />
+          <label for="nomFun" class="form-label">Valor do coffe unitário</label>
+          <input type="text" class="form-control" id="nomFun"  />
         </div>
         <div class="col-md-6">
           <!-- Quantidade de pessoas -->
-          <label for="nomFun" class="form-label">Nome do Colaborador</label>
+          <label for="nomFun" class="form-label">Quantidade de pessoas</label>
           <input type="text" class="form-control" id="nomFun" disabled />
         </div>
         <div class="col-md-6">
           <!-- Custo total -->
-          <label for="Date" class="form-label">Data da Requisição</label>
-          <input type="email" class="form-control" id="Date" disabled />
+          <label for="Date" class="form-label">Custo estimado</label>
+          <input type="number" class="form-control" id="Date" disabled />
         </div>
 
         <div class="col-12">

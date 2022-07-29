@@ -1,48 +1,21 @@
+import { formateDate } from "../js/index.js";
+
 this.workflowCockpit = workflowCockpit({
     init: _init,
-    // onSubmit: _onSubmit,
-    // onError: _onError,
 })
 
-
-
-function _init(data, info) {
+async function _init(data, info) {
   let date = new Date();
-  let formatedDate = ((date.getDate() )) + '/' + ((date.getMonth() + 1)) + "/" + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes(); 
-    console.log("iniciei")
-    const { initialVariables } = data.loadContext;
-    console.log(initialVariables);
-
-    info.getUserData().then((userData) => {
-        document.getElementById("Date").setAttribute("value", formatedDate);
-        document.getElementById("nomFun").setAttribute("value", userData.fullname)
-        // document.getElementById("emaFun").setAttribute("value", userData.email);
-    }).then(() => {
-        info.getPlatformData().then(function (platformData) {
-            console.log(platformData)
-        })
-    })
-}
-
-function _saveData(data, info) {
-    if (!isFormValid()) {
-        document.getElementById("gridCheck").setAttribute("class", "form-check-input is-invalid")
-        throw new Error("Os dados informados não são válidos.");
+  let userdata = await info.getUserData()
+  let fields = [{field: "Date", value: formateDate(date)},{field: "nomFun", value: userdata.fullname}]
+  fields.map((element) => {
+    try {
+      document.getElementById(element.field).setAttribute("value", element.value)
+    } catch (e) {
+      console.log(`the element ${element.field} was not found (error: 500)`)
     }
-    let newData = {};
-    let selectEstado = document.getElementById("estDes")
-
-    newData.desMot = document.getElementById("desMot").value;
-    newData.nomDes = document.getElementById("nomDes").value;
-    newData.estDes = document.getElementById("estDes").value;
-    newData.numCeṕ = document.getElementById("numCep").value;
-    newData.check = document.getElementById("gridCheck").value;
-    console.log(newData);
-    return {
-        formData: newData
-    };
+  })
 }
-
 
 
 (function () {

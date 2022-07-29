@@ -32,6 +32,11 @@
           document.getElementById('#-others').type = "hidden"
         }
       }
+      function add(){
+        let unityCost = document.getElementById("unityCost").value
+        let muchPeople = document.getElementById("muchPeople").value
+        document.getElementById('extimatedCost').value = unityCost * muchPeople
+      }
     </script>
 </head>
 <body>
@@ -40,13 +45,13 @@
       <h1>Dados do Colaborador</h1>
         <div class="col-md-6">
           <!-- NOME -->
-          <label for="nomFun" class="form-label">Nome do Colaborador</label>
-          <input type="email" class="form-control" id="Date" disabled />
+          <label for="name" class="form-label">Nome do Colaborador</label>
+          <input type="email" class="form-control" id="name" disabled />
         </div>
         <div class="col-md-6">
           <!-- DATA -->
-          <label for="Date" class="form-label">Data da Requisição</label>
-          <input type="email" class="form-control" id="Date" disabled />
+          <label for="reqDate" class="form-label">Data da Requisição</label>
+          <input type="email" class="form-control" id="reqDate" disabled />
         </div>
         <!-- HEADER -->
         <h1>Dados do Evento</h1>
@@ -64,9 +69,6 @@
             <option value="treinamento">Treinamento</option>
             <option value="others">Outros</option>
           </select>
-          <!-- <div id="desMot" class="form-text">
-            Informe detalhadamente o motivo da sua solicitação.
-          </div> -->
         </div>
         <div class="col-12">
           <!-- Outros  -->
@@ -76,47 +78,29 @@
         <!-- datas do evento -->
         <div class="col-md-6">
           <!-- Inicio do evento -->
-          <label for="Date" class="form-label">Data do início do evento</label>
-          <input type="date" class="form-control" id="Date"/>
+          <label for="start-date" class="form-label">Data do início do evento</label>
+          <input type="date" class="form-control" id="start-date"/>
         </div>
         <div class="col-md-6">
           <!-- fim do evento -->
-          <label for="Date" class="form-label">Data do término do evento</label>
-          <input type="date" class="form-control" id="Date"/>
+          <label for="end-date" class="form-label">Data do término do evento</label>
+          <input type="date" class="form-control" id="end-date"/>
         </div>
         <!-- Valores -->
         <div class="col-md-6">
           <!-- Custo unitario -->
-          <label for="nomFun" class="form-label">Valor do coffe unitário</label>
-          <input type="number" class="form-control" id="nomFun"  />
+          <label for="unityCost" class="form-label">Valor do coffe unitário</label>
+          <input onchange="add()" type="number" class="form-control" id="unityCost"  />
         </div>
         <div class="col-md-6">
           <!-- Quantidade de pessoas -->
-          <label for="nomFun" class="form-label">Quantidade de pessoas</label>
-          <input type="number" class="form-control" id="nomFun" />
+          <label for="muchPeople" class="form-label">Quantidade de pessoas</label>
+          <input onchange="add()" type="number" class="form-control" id="muchPeople" />
         </div>
         <div class="col-md-6">
           <!-- Custo total -->
-          <label for="Date" class="form-label">Custo estimado</label>
-          <input type="number" class="form-control" id="Date" disabled />
-        </div>
-
-        <div class="col-12">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="gridCheck"
-              onclick="onSelect()"
-              required
-            />
-            <label class="form-check-label" for="gridCheck">
-              Declaro que estou ciente com os termos de empréstimo
-            </label>
-            <div class="invalid-feedback">
-              Você precisa aceitar os termos para prosseguir.
-            </div>
-          </div>
+          <label for="extimatedCost" class="form-label">Custo estimado</label>
+          <input type="number" class="form-control" id="extimatedCost" disabled />
         </div>
   
         <!-- Para formulários do BPM, não é necessário colocar botões para submit, basta usar o botão 'Enviar' do próprio BPM -->

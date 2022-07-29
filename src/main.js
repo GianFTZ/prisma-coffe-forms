@@ -1,42 +1,44 @@
 import { formateDate } from "../js/index.js";
 
 this.workflowCockpit = workflowCockpit({
-    init: _init,
-})
+  init: _init,
+});
 
 async function _init(data, info) {
   let date = new Date();
-  let userdata = await info.getUserData()
-  let fields = [{field: "Date", value: formateDate(date)},{field: "nomFun", value: userdata.fullname}]
+  let userdata = await info.getUserData();
+  let fields = [
+    { field: "reqDate", value: formateDate(date) },
+    { field: "name", value: userdata.fullname },
+  ];
   fields.map((element) => {
     try {
-      document.getElementById(element.field).setAttribute("value", element.value)
+      document
+        .getElementById(element.field)
+        .setAttribute("value", element.value);
     } catch (e) {
-      console.log(`the element ${element.field} was not found (error: 500)`)
+      console.log(`the element ${element.field} was not found (error: 500)`);
     }
-  })
+  });
 }
 
+// function _init(data, info) {
 
-(function () {
-    "use strict";
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll(".needs-validation");
-  
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-  
-          form.classList.add("was-validated");
-        },
-        false
-      );
-    });
-  })(); 
+//   // Caso seja executado algum serviço externo ao abrir o formulário e o retorno dele seja atribuído a variáveis de execução
+//   // essas variáveis serão preenchidas
+//   const { initialVariables } = data.loadContext;
+//   console.log(initialVariables);
+
+//   info
+//     .getUserData()
+//     .then(function (user) {
+//       // Usuário logado
+//       document.getElementById("nomFun").setAttribute("value", user.fullname);
+//       document.getElementById("emaFun").setAttribute("value", user.email);
+//     })
+//     .then(function () {
+//       info.getPlatformData().then(function (platformData) {
+//         // Informações da G7
+//         console.log(platformData);
+//       });
+//     });

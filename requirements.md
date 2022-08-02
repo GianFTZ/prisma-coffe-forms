@@ -30,5 +30,12 @@
     {Anexe a nota fiscal}
 
 
+# os texts areas (nos dois) feito
 
-# emaFun, nomFun
+# motivo bugado
+# to fixed
+
+# visibilidade do fluxo
+
+# multiplicação na revisão de dados
+# revisão do coordenador 2 

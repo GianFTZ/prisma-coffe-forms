@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisição de Coffe</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.14/iframeResizer.contentWindow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.senior.com.br/bpm/1.10.0/workflow-cockpit.min.js"
+    ></script>
+    <script type="module" src="index.js"></script>
+</head>
+<body>
+    <form class="row g-3 needs-validation" id="form" novalidate>
+      <!-- HEADER -->
+      <h1>Dados do Colaborador</h1>
+        <div class="col-md-6">
+          <!-- NOME -->
+          <label for="name" class="form-label">Nome do Colaborador</label>
+          <input type="email" class="form-control" id="nome-colaborador" disabled/>
+        </div>
+        <div class="col-md-6">
+          <!-- DATA -->
+          <label for="reqDate" class="form-label">Data da Requisição</label>
+          <input type="email" class="form-control" id="data-requisicao"  disabled/>
+        </div>
+        <!-- HEADER -->
+        <h1>Dados do Evento</h1>
+        <div class="col-12">
+          <!-- Local da realização do evento  -->
+          <label for="adress" class="form-label">Local da realização do evento</label>
+          <input type="text" class="form-control" id="endereco-evento" />
+        </div>
+        <div class="col-md-12">
+          <label for="nomDes" class="form-label">Motivo</label>
+          <select onchange="showHidden()" type="text" class="form-select" id="#option-selector" >
+            <option selected>Selecione uma opção</option>
+            <option value="visita-tecnica">Visita Técnica</option>
+            <option value="reuniao">Reunião</option>
+            <option value="treinamento">Treinamento</option>
+            <option value="others">Outros</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <!-- Outros  -->
+          <input type="hidden" placeholder="digite o motivo" class="form-control" id="#-others" />
+        </div>
+
+        <!-- datas do evento -->
+        <div class="col-md-6">
+          <!-- Inicio do evento -->
+          <label for="start-date" class="form-label" >Data do início do evento</label>
+          <input type="date" class="form-control"  id="data-inicio"/>
+        </div>
+        <div class="col-md-6">
+          <!-- fim do evento -->
+          <label for="end-date" class="form-label">Data do término do evento</label>
+          <input type="date" class="form-control" id="data-termino" />
+        </div>
+        <!-- Valores -->
+        <div class="col-md-6">
+          <!-- Custo unitario -->
+          <label for="unityCost" class="form-label">Valor do coffe unitário</label>
+          <input type="number" class="form-control" id="preco-unitario"  />
+        </div>
+        <div class="col-md-6">
+          <!-- Quantidade de pessoas -->
+          <label for="muchPeople" class="form-label">Quantidade de pessoas</label>
+          <input type="number" class="form-control" id="quantidade-pessoas" />
+        </div>
+        <div class="col-md-6">
+          <!-- Custo total -->
+          <label for="extimatedCost" class="form-label">Custo estimado</label>
+          <input type="number" class="form-control" id="preco-estimado" disabled />
+        </div>
+        <!-- HEADER -->
+        <h1>Analise do coordenador</h1>
+    </div>
+            <div class="col-md-12">
+                <!-- Parecer do coordenador -->
+                <label for="parecer" class="form-label">Parecer do coordenador</label>
+                <input type="text" class="form-control" id="parecer" disabled/>
+              </div>
+      </form>
+</body>
+</html>

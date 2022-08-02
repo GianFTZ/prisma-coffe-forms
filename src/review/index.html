@@ -22,22 +22,7 @@
       type="text/javascript"
       src="https://cdn.senior.com.br/bpm/1.10.0/workflow-cockpit.min.js"
     ></script>
-    <script type="module" src="main.js"></script>
-    <script>
-      function showHidden(){
-        let optionValue = document.getElementById("#option-selector").value;
-        if (optionValue == "others") {
-          document.getElementById('#-others').type = "text"
-        } else {
-          document.getElementById('#-others').type = "hidden"
-        }
-      }
-      function add(){
-        let unityCost = document.getElementById("unityCost").value
-        let muchPeople = document.getElementById("muchPeople").value
-        document.getElementById('extimatedCost').value = unityCost * muchPeople
-      }
-    </script>
+    <script type="module" src="index.js"></script>
 </head>
 <body>
     <form class="row g-3 needs-validation" id="form" novalidate>
@@ -46,23 +31,23 @@
         <div class="col-md-6">
           <!-- NOME -->
           <label for="name" class="form-label">Nome do Colaborador</label>
-          <input type="email" class="form-control" id="name" disabled />
+          <input type="email" class="form-control" id="nome-colaborador" disabled />
         </div>
         <div class="col-md-6">
           <!-- DATA -->
           <label for="reqDate" class="form-label">Data da Requisição</label>
-          <input type="email" class="form-control" id="reqDate" disabled />
+          <input type="email" class="form-control" id="data-requisicao" disabled />
         </div>
         <!-- HEADER -->
         <h1>Dados do Evento</h1>
         <div class="col-12">
           <!-- Local da realização do evento  -->
           <label for="adress" class="form-label">Local da realização do evento</label>
-          <input type="text" class="form-control" id="adress" />
+          <input type="text" class="form-control" id="endereco-evento" disabled />
         </div>
         <div class="col-md-12">
           <label for="nomDes" class="form-label">Motivo</label>
-          <select onchange="showHidden()" type="text" class="form-select" id="#option-selector">
+          <select onchange="showHidden()" type="text" class="form-select" id="#option-selector" disabled>
             <option selected>Selecione uma opção</option>
             <option value="visita-tecnica">Visita Técnica</option>
             <option value="reuniao">Reunião</option>
@@ -72,39 +57,44 @@
         </div>
         <div class="col-12">
           <!-- Outros  -->
-          <input type="hidden" placeholder="digite o motivo" class="form-control" id="#-others" />
+          <input type="hidden" placeholder="digite o motivo" class="form-control" id="#-others" disabled />
         </div>
 
         <!-- datas do evento -->
         <div class="col-md-6">
           <!-- Inicio do evento -->
-          <label for="start-date" class="form-label">Data do início do evento</label>
-          <input type="date" class="form-control" id="start-date"/>
+          <label for="start-date" class="form-label" >Data do início do evento</label>
+          <input type="date" class="form-control" disabled id="data-inicio"/>
         </div>
         <div class="col-md-6">
           <!-- fim do evento -->
           <label for="end-date" class="form-label">Data do término do evento</label>
-          <input type="date" class="form-control" id="end-date"/>
+          <input type="date" class="form-control" id="data-termino" disabled/>
         </div>
         <!-- Valores -->
         <div class="col-md-6">
           <!-- Custo unitario -->
           <label for="unityCost" class="form-label">Valor do coffe unitário</label>
-          <input onchange="add()" type="number" class="form-control" id="unityCost"  />
+          <input type="number" class="form-control" id="preco-unitario" disabled  />
         </div>
         <div class="col-md-6">
           <!-- Quantidade de pessoas -->
           <label for="muchPeople" class="form-label">Quantidade de pessoas</label>
-          <input onchange="add()" type="number" class="form-control" id="muchPeople" />
+          <input type="number" class="form-control" id="quantidade-pessoas"  disabled/>
         </div>
         <div class="col-md-6">
           <!-- Custo total -->
           <label for="extimatedCost" class="form-label">Custo estimado</label>
-          <input type="number" class="form-control" id="extimatedCost" disabled />
+          <input type="number" class="form-control" id="preco-estimado" disabled />
         </div>
-  
-        <!-- Para formulários do BPM, não é necessário colocar botões para submit, basta usar o botão 'Enviar' do próprio BPM -->
-         <button type="submit" class="btn btn-primary" onclick="isFormValid()">Submit</button> 
+        <!-- HEADER -->
+        <h1>Analise do coordenador</h1>
+    </div>
+            <div class="col-md-12">
+                <!-- Parecer do coordenador -->
+                <label for="parecer" class="form-label">Parecer do coordenador</label>
+                <textarea placeholder="digite aqui por favor" id="w3review" name="w3review" rows="4" cols="50"></textarea>
+              </div>
       </form>
 </body>
 </html>
